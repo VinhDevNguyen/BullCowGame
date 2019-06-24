@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build And Debug",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", "E:\\Make Game with Unreal Engine\\Bull_And_Cow_Game\\Section 2\\BullCowGame\\FBullCowGame.cpp","E:\\Make Game with Unreal Engine\\Bull_And_Cow_Game\\Section 2\\BullCowGame\\FBullCowGame.h","E:\\Make Game with Unreal Engine\\Bull_And_Cow_Game\\Section 2\\BullCowGame\\Main.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
