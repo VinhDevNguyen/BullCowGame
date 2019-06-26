@@ -4,12 +4,9 @@ FBullCowGame::FBullCowGame()	{ Reset(); }
 
 int FBullCowGame::GetMaxTries()		const { return MyMaxTries; }
 
-int FBullCowGame::GetCurrentTry()	const { return MyCurrentTry; }
+int FBullCowGame::GetCurrentTry()	const {return MyCurrentTry; }
 
-bool FBullCowGame::IsGameWon() const
-{
-	return false;
-}
+bool FBullCowGame::IsGameWon() const	{ return bGameIsWon;}
 
 int32 FBullCowGame::GetHiddenWordLenght() const { return MyHiddenWord.length(); }
 
@@ -20,7 +17,7 @@ void FBullCowGame::Reset()
 	const FString HIDDEN_WORD = "donkey"; //The hidden word we want the player guess
 	MyHiddenWord = HIDDEN_WORD;
 	MyCurrentTry = 1;
-	
+	bGameIsWon = false;
 	return;
 }
 
@@ -70,9 +67,16 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 				{
 					BullCowCount.Cows++; //must be a cow
 				}
-					
 			}
 		}
+	}
+	if (BullCowCount.Bulls == WordLenght)
+	{
+		bGameIsWon = true;
+	}
+	else
+	{
+		bGameIsWon = false;
 	}
 	return BullCowCount;
 }

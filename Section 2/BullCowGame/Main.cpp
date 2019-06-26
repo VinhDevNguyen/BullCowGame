@@ -12,7 +12,6 @@ FBullCowGame BCGame; //instantiate(Khoi tao) a new game
 
 int32 main()
 {
-	std::cout << BCGame.GetCurrentTry();
 	bool bPlayAgian = false;
 	do {
 		PrintIntro();
@@ -25,7 +24,7 @@ int32 main()
 
 void PrintIntro() //Introduce the game
 {
-	std::cout << "Welcome to Bulls and Cows, a fun word game. \n";
+	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game. \n";
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght() << " letter isogram I'm thinking of? \n";
 	std::cout << std::endl;
 	return;
@@ -35,10 +34,12 @@ void PlayGame()
 {
 	BCGame.Reset();
 	int32 MaxTries = BCGame.GetMaxTries();
-	//Loop for the number of turns asking for guesses
-	// TODO change from FOR to WHILE loop once we are validating tries
-	for (int32 count = 1; count <= MaxTries; count++)
+	//Loop asking for guesses while the game is NOT won
+	// and there are still tries remaining
+	
+	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries)
 	{
+		// TODO change from FOR to WHILE loop once we are validating tries
 		Ftext Guess = GetValidGuess(); //TODO make loop checking valid
 
 		//Submit valid guess to the game and recieve counts
@@ -83,7 +84,7 @@ Ftext GetValidGuess()
 
 bool AskToPlayAgain()
 {
-	std::cout << "Do you want to play again? ";
+	std::cout << "Do you want to play again? (y/n) ";
 	Ftext Response;
 	std::getline(std::cin, Response);
 	return (Response[0] == 'y' || Response[0] == 'Y');
