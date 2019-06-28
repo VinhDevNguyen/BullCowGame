@@ -9,13 +9,15 @@ Ftext GetValidGuess(); //Get the player guess
 bool AskToPlayAgain();
 void PlayGame();
 FBullCowGame BCGame; //instantiate(Khoi tao) a new game
+void PrintGameSumary(); 
+
 
 int32 main()
 {
 	bool bPlayAgian = false;
 	do {
 		PrintIntro();
-		PlayGame();//TODO a game summary
+		PlayGame();
 		bPlayAgian = AskToPlayAgain();
 	} while (bPlayAgian);
 	system("pause");
@@ -39,8 +41,7 @@ void PlayGame()
 	
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries)
 	{
-		// TODO change from FOR to WHILE loop once we are validating tries
-		Ftext Guess = GetValidGuess(); //TODO make loop checking valid
+		Ftext Guess = GetValidGuess(); 
 
 		//Submit valid guess to the game and recieve counts
 		FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
@@ -48,7 +49,21 @@ void PlayGame()
 		std::cout << "Bulls = " << BullCowCount.Bulls;
 		std::cout << ". Cows = " << BullCowCount.Cows << "\n\n";
 	}
-	//TODO sumarise game
+	
+	PrintGameSumary();
+	return;
+}
+
+void PrintGameSumary()
+{
+	if (BCGame.IsGameWon())
+	{
+		std::cout << "Well Done - You Win!\n";
+	}
+	else
+	{
+		std::cout << "Better luck next time!\n";
+	}
 }
 
 
