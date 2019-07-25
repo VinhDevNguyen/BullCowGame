@@ -14,12 +14,12 @@ void PrintGameSumary();
 
 int32 main()
 {
-	bool bPlayAgian = false;
+	bool bPlayAgain = false;
 	do {
 		PrintIntro();
 		PlayGame();
-		bPlayAgian = AskToPlayAgain();
-	} while (bPlayAgian);
+		bPlayAgain = AskToPlayAgain();
+	} while (bPlayAgain);
 	system("pause");
 	return 0;
 }
@@ -62,6 +62,7 @@ void PrintGameSumary()
 	}
 	else
 	{
+		std::cout << "Oops, Out of turn :<";
 		std::cout << "Better luck next time!\n";
 	}
 }
