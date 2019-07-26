@@ -27,7 +27,7 @@ int32 main()
 void PrintIntro() //Introduce the game
 {
 	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game. \n";
-	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght() << " letter isogram I'm thinking of? \n";
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght() << " letter isogram I'm thinking of? (The name of an animal) \n";
 	std::cout << std::endl;
 	return;
 }
