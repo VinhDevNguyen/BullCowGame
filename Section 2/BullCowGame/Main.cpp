@@ -82,9 +82,8 @@ Ftext GetValidGuess()
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 		// get a guess from the player
-		int32 MaxTry = BCGame.GetMaxTries();
 		int32 CurrentTry = BCGame.GetCurrentTry();
-		std::cout << "Try (" << CurrentTry <<" of "<<MaxTry<< ") Enter your guess: ";
+		std::cout << "Try (" << CurrentTry <<" of "<<BCGame.GetMaxTries()<< ") Enter your guess: ";
 		std::getline(std::cin, Guess);
 		// check status and give feedback
 		Status = BCGame.CheckGuessValidity(Guess);

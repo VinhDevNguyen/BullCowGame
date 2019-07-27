@@ -1,19 +1,19 @@
 #include "FBullCowGame.h"
 #include<map>
 #define TMap std::map
-FBullCowGame::FBullCowGame()	{ Reset(); }
+FBullCowGame::FBullCowGame() { Reset(); }
 
 int FBullCowGame::GetMaxTries()		const { return MyMaxTries; }
 
-int FBullCowGame::GetCurrentTry()	const {return MyCurrentTry; }
+int FBullCowGame::GetCurrentTry()	const { return MyCurrentTry; }
 
-bool FBullCowGame::IsGameWon() const	{ return bGameIsWon;}
+bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
 int32 FBullCowGame::GetHiddenWordLenght() const { return MyHiddenWord.length(); }
 
 void FBullCowGame::Reset()
 {
-	constexpr int MAX_TRIES = 10;
+	constexpr int MAX_TRIES = 8;
 	MyMaxTries = MAX_TRIES;
 	const FString HIDDEN_WORD = "donkey"; //The hidden word we want the player guess
 	MyHiddenWord = HIDDEN_WORD;
@@ -24,7 +24,7 @@ void FBullCowGame::Reset()
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
-	
+
 	if (!IsIsogram(Guess))	// if the guess isn't an isogram
 	{
 		return EGuessStatus::Not_Isogram; //TODO write Function
@@ -56,8 +56,8 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 	{
 		for (int32 GChar = 0; GChar < WordLenght; GChar++) //compare letters against the guess
 		{
-			
-			if (Guess[GChar]==MyHiddenWord[MHWchar])	// find they match then
+
+			if (Guess[GChar] == MyHiddenWord[MHWchar])	// find they match then
 
 			{
 				if (MHWchar == GChar)	// if they're in the same place
@@ -82,8 +82,6 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 	return BullCowCount;
 }
 
-
-
 bool FBullCowGame::IsIsogram(FString Word) const
 {
 	// treat 0 and 1 letter words as isograms
@@ -101,7 +99,7 @@ bool FBullCowGame::IsIsogram(FString Word) const
 			letterSeen[Letter] = true; // add the letter to the map as seen
 		}
 	}
-	
+
 	return true;	// for example in cases where /0 is entered
 }
 
@@ -109,13 +107,9 @@ bool FBullCowGame::IsLowerCase(FString Word) const
 {
 	for (auto Letter : Word)
 	{
-		if (!islower(Letter)) //If not a lowercase letter
-		{
+		if (!islower(Letter))
 			return false;
-		}
-			
+		return true;
 	}
+
 }
-
-
-
