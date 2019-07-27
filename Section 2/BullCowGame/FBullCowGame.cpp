@@ -13,7 +13,7 @@ int32 FBullCowGame::GetHiddenWordLenght() const { return MyHiddenWord.length(); 
 
 void FBullCowGame::Reset()
 {
-	constexpr int MAX_TRIES = 8;
+	constexpr int MAX_TRIES = 10;
 	MyMaxTries = MAX_TRIES;
 	const FString HIDDEN_WORD = "donkey"; //The hidden word we want the player guess
 	MyHiddenWord = HIDDEN_WORD;
@@ -29,7 +29,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	{
 		return EGuessStatus::Not_Isogram; //TODO write Function
 	}
-	else if (false)	// if the guess isn't all lowercase
+	else if (!IsLowerCase(Guess))	// if the guess isn't all lowercase
 	{
 		return EGuessStatus::Not_Lowercase; //return error
 	}
@@ -82,6 +82,8 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 	return BullCowCount;
 }
 
+
+
 bool FBullCowGame::IsIsogram(FString Word) const
 {
 	// treat 0 and 1 letter words as isograms
@@ -101,6 +103,18 @@ bool FBullCowGame::IsIsogram(FString Word) const
 	}
 	
 	return true;	// for example in cases where /0 is entered
+}
+
+bool FBullCowGame::IsLowerCase(FString Word) const
+{
+	for (auto Letter : Word)
+	{
+		if (!islower(Letter)) //If not a lowercase letter
+		{
+			return false;
+		}
+			
+	}
 }
 
 

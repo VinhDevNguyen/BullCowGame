@@ -26,8 +26,16 @@ int32 main()
 
 void PrintIntro() //Introduce the game
 {
-	std::cout << "\n\nWelcome to Bulls and Cows, a fun word game. \n";
-	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght() << " letter isogram I'm thinking of? (The name of an animal) \n";
+	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
+	std::cout << std::endl;
+	std::cout << "          }   {         ___ " << std::endl;
+	std::cout << "          (o o)        (o o) " << std::endl;
+	std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+	std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+	std::cout << " *  |-,--- |              |------|  * " << std::endl;
+	std::cout << "    ^      ^              ^      ^ " << std::endl;
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLenght();
+	std::cout << " letter isogram I'm thinking of?\n";
 	std::cout << std::endl;
 	return;
 }
@@ -62,7 +70,7 @@ void PrintGameSumary()
 	}
 	else
 	{
-		std::cout << "Oops, Out of turn :<";
+		std::cout << "Oops, Out of turn :<"<<std::endl;
 		std::cout << "Better luck next time!\n";
 	}
 }
@@ -74,8 +82,9 @@ Ftext GetValidGuess()
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 		// get a guess from the player
+		int32 MaxTry = BCGame.GetMaxTries();
 		int32 CurrentTry = BCGame.GetCurrentTry();
-		std::cout << "Try " << CurrentTry << ".Enter your guess: ";
+		std::cout << "Try (" << CurrentTry <<" of "<<MaxTry<< ") Enter your guess: ";
 		std::getline(std::cin, Guess);
 		// check status and give feedback
 		Status = BCGame.CheckGuessValidity(Guess);
