@@ -2,6 +2,7 @@
 #include<iostream>
 #include<string>
 
+// to make syntax Unreal friendly
 using int32 = int;
 using Ftext = std::string;
 using FString = std::string;
@@ -32,7 +33,7 @@ public:
 	bool IsGameWon() const;
 	int32 GetHiddenWordLenght() const;
 
-	void Reset(); //TODO make a more rich return value
+	void Reset(); 
 	
 	EGuessStatus CheckGuessValidity(FString) const;
 
